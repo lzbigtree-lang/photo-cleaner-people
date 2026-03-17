@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
   const { token, image, x, y } = await req.json();
   if (!token) return NextResponse.json({ error: "缺少 API Token" }, { status: 400 });
 
-  const res = await fetch(`${REPLICATE_API}/models/meta/sam-2/predictions`, {
+  const res = await fetch(`${REPLICATE_API}/predictions`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -27,6 +27,7 @@ export async function POST(req: NextRequest) {
       Prefer: "wait=60",
     },
     body: JSON.stringify({
+      version: "fe97b453a6455861e3bac769b441ca1f1086110da7466dbb65cf1eecfd60dc83",
       input: {
         image,
         point_coords: [[x, y]],

@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
   const { token, image, mask } = await req.json();
   if (!token) return NextResponse.json({ error: "缺少 API Token" }, { status: 400 });
 
-  const res = await fetch(`${REPLICATE_API}/models/advimman/lama/predictions`, {
+  const res = await fetch(`${REPLICATE_API}/predictions`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -27,7 +27,13 @@ export async function POST(req: NextRequest) {
       Prefer: "wait=60",
     },
     body: JSON.stringify({
-      input: { image, mask },
+      version: "95b7223104132402a9ae91cc677285bc5eb997834bd2349fa486f53910fd68b3",
+      input: {
+        image,
+        mask,
+        prompt: "background, natural scene",
+        num_inference_steps: 25,
+      },
     }),
   });
 
