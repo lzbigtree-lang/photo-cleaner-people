@@ -93,7 +93,7 @@ export default function Home() {
 
   return (
     <main className="max-w-5xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-1">🖼️ 照片人物清除工具</h1>
+      <h1 className="text-3xl font-bold mb-1">🖼️ 肥金的照片人物清除工具</h1>
       <p className="text-gray-500 mb-6">上传照片，点击要保留的人物，自动去除其他人</p>
 
       <TokenInput token={token} onChange={setToken} />

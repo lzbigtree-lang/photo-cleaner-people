@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "照片人物清除工具",
+  title: "肥金的照片人物清除工具",
   description: "上传照片，点击要保留的人物，自动去除其他人",
 };
 
